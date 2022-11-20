@@ -66,9 +66,8 @@ function loading() {
   used.value = true;
 }
 onMounted(() => {
-  const input = document.querySelector("input");
   window.addEventListener("click", () => {
-    input.focus();
+    document.querySelector("input").focus();
   });
 });
 useHead({
