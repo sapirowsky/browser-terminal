@@ -27,30 +27,30 @@ function clearing() {
 }
 function start() {
   if (!used2.value) {
-    setTimeout(() => {
-      startingCoolOSCommands.value.push("Łączenie z bazą smutnyDB");
-    }, 500);
-    setTimeout(() => {
-      startingCoolOSCommands.value.push("Uruchamianie quizów");
-    }, 1000);
-    setTimeout(() => {
-      startingCoolOSCommands.value.push("Nie udało się uruchomić, kuźde");
-    }, 1500);
-    setTimeout(() => {
-      startingCoolOSCommands.value.push("Błąd xfcee4, nie da się żyć");
-    }, 2000);
-    setTimeout(() => {
-      startingCoolOSCommands.value.push("Adam left the server");
-    }, 2500);
-    setTimeout(() => {
-      startingCoolOSCommands.value.push("A może jednak F12");
-    }, 3000);
-    setTimeout(() => {
-      startingCoolOSCommands.value.push("Uruchamianie terminalu");
-    }, 3500);
-    setTimeout(() => {
-      startingCoolOS.value = false;
-    }, 4000);
+    const alerts = [
+      "Łączenie z bazą smutnyDB",
+      "Uruchamianie quizów",
+      "Nie udało się uruchomić, kuźde",
+      "Błąd xfcee4, nie da się żyć",
+      "Adam left the server",
+      "A może jednak F12",
+      "Uruchamianie terminalu",
+      false,
+    ];
+    const stdTimeOut = 500;
+    let timeOut = 500;
+    alerts.forEach((e, i) => {
+      timeOut = stdTimeOut * (i + 1);
+      if (e) {
+        setTimeout(() => {
+          startingCoolOSCommands.value.push(e);
+        }, timeOut);
+      } else {
+        setTimeout(() => {
+          startingCoolOS.value = false;
+        }, timeOut);
+      }
+    });
   }
   used2.value = true;
 }
