@@ -66,13 +66,9 @@ function loading() {
   used.value = true;
 }
 onMounted(() => {
+  const input = document.querySelector("input");
   window.addEventListener("click", () => {
-    document.querySelector("input").focus();
-  });
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowUp" && commands.value[commands.value.length - 1]) {
-      value.value = commands.value[commands.value.length - 1];
-    }
+    input.focus();
   });
 });
 useHead({
@@ -152,7 +148,7 @@ useHead({
         {{ value }}
         <span class="bg-green-300 animate-pulse">&nbsp;&nbsp;</span>
       </p>
+      <input v-model="value" class="h-0" type="text" @keydown.enter="onEnter" />
     </div>
   </div>
-  <input v-model="value" class="h-0" type="text" @keydown.enter="onEnter" />
 </template>
