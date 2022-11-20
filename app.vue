@@ -45,11 +45,14 @@ function start() {
       startingCoolOSCommands.value.push("Adam left the server");
     }, 2500);
     setTimeout(() => {
-      startingCoolOSCommands.value.push("Uruchamianie terminala");
+      startingCoolOSCommands.value.push("A może jednak F12");
     }, 3000);
     setTimeout(() => {
-      startingCoolOS.value = false;
+      startingCoolOSCommands.value.push("Uruchamianie terminala");
     }, 3500);
+    setTimeout(() => {
+      startingCoolOS.value = false;
+    }, 4000);
   }
   used2.value = true;
 }
