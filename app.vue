@@ -11,7 +11,6 @@ const declaredCommands = {
     "Strona została napisana z użyciem frameworka nuxt i tailwindcss. Jest hostowana na vercel.com z podłączoną domeną od Google Domains.",
   creator: "Pozdrawiam.",
 };
-const commandHistory = [];
 const commands = ref([]);
 const value = ref("");
 const used = ref(false);
@@ -21,7 +20,6 @@ const startingCoolOSCommands = ref(["Ładowanie sapiruntuOS..."]);
 console.log("Kuźde udało się znaleźć, hasło: wot");
 function onEnter() {
   commands.value.push(value.value);
-  commandHistory.push(value.value);
   value.value = "";
 }
 function clearing() {
@@ -48,7 +46,7 @@ function start() {
       startingCoolOSCommands.value.push("A może jednak F12");
     }, 3000);
     setTimeout(() => {
-      startingCoolOSCommands.value.push("Uruchamianie terminala");
+      startingCoolOSCommands.value.push("Uruchamianie terminalu");
     }, 3500);
     setTimeout(() => {
       startingCoolOS.value = false;
@@ -70,6 +68,11 @@ function loading() {
 onMounted(() => {
   window.addEventListener("click", () => {
     document.querySelector("input").focus();
+  });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp" && commands.value[commands.value.length - 1]) {
+      value.value = commands.value[commands.value.length - 1];
+    }
   });
 });
 useHead({
@@ -127,6 +130,9 @@ useHead({
         <p v-else-if="command === 'secret -pass wot'" class="ml-6 w-1/2">
           Ładowanie.... {{ loading() }}
         </p>
+        <p v-else-if="command.match(/secret -pass/g)" class="ml-6 w-1/2">
+          Złe hasło
+        </p>
         <p
           v-else-if="command === 'clear' || command === 'cls'"
           class="ml-6 w-1/2"
@@ -146,7 +152,7 @@ useHead({
         {{ value }}
         <span class="bg-green-300 animate-pulse">&nbsp;&nbsp;</span>
       </p>
-      <input v-model="value" class="h-0" type="text" @keydown.enter="onEnter" />
     </div>
   </div>
+  <input v-model="value" class="h-0" type="text" @keydown.enter="onEnter" />
 </template>
