@@ -18,7 +18,7 @@ const used = ref(false);
 const used2 = ref(false);
 const startingCoolOS = ref(true);
 const startingCoolOSCommands = ref(["Ładowanie sapiruntuOS..."]);
-console.log("Ulubiona gra ulubionego nauczyciela");
+console.log("Kuźde udało się znaleźć, hasło: wot");
 function onEnter() {
   commands.value.push(value.value);
   commandHistory.push(value.value);
@@ -48,13 +48,8 @@ function start() {
       startingCoolOSCommands.value.push("Uruchamianie terminala");
     }, 3000);
     setTimeout(() => {
-      startingCoolOSCommands.value.push(
-        "var WybitnyProgramista = 'czołgista';"
-      );
-    }, 3250);
-    setTimeout(() => {
       startingCoolOS.value = false;
-    }, 4000);
+    }, 3500);
   }
   used2.value = true;
 }
