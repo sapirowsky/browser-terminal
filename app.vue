@@ -17,7 +17,7 @@ const used = ref(false);
 const used2 = ref(false);
 const startingCoolOS = ref(true);
 const startingCoolOSCommands = ref(["Ładowanie sapiruntuOS..."]);
-console.log("Kuźde udało się znaleźć, hasło: wot");
+console.log("Ehhh, udało się znaleźć hasło: wot");
 function onEnter() {
   commands.value.push(value.value);
   value.value = "";
@@ -30,7 +30,7 @@ function start() {
     const alerts = [
       "Łączenie z bazą smutnyDB",
       "Uruchamianie quizów",
-      "Nie udało się uruchomić, kuźde",
+      "Nie udało się uruchomić wifi",
       "Błąd xfcee4, nie da się żyć",
       "Adam left the server",
       "A może jednak F12",
